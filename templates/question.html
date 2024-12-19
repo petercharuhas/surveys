@@ -1,0 +1,21 @@
+
+{% extends "base.html" %}
+
+{% block title %}Question {{ question_num + 1 }}{% endblock %}
+
+{% block header %}Question {{ question_num + 1 }}{% endblock %}
+
+{% block content %}
+    <form method="POST" action="/answer">
+        <fieldset>
+            <legend>{{ question.question }}</legend>
+            {% for choice in question.choices %}
+                <div>
+                    <input type="radio" name="answer" value="{{ choice }}" required>
+                    <label>{{ choice }}</label>
+                </div>
+            {% endfor %}
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Submit Answer</button>
+    </form>
+{% endblock %}
